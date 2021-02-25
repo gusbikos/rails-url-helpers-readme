@@ -1,0 +1,16 @@
+<% @posts.each do |post| %>
+  <div><a href='<%= "/posts/#{post.id}" %>'><%= post.title %></a></div>  - Alot of code, and using HTML a href tag.
+<% end %> 
+
+<% @posts.each do |post| %>
+  <div><%= link_to post.title, "/posts/#{post.id}" %></div>    - Use of string interpolation,and hard coding path, getting 
+<% end %>                                                        rid of HTML a href tag
+
+<% @posts.each do |post| %>
+  <div><%= link_to post.title, post_path(post.id) %></div> - Using post_path and pass in post argument(post.id) Using link_to 
+<% end %>                                                     as well.
+
+<% @posts.each do |post| %>
+  <div><%= link_to post.title, post_path(post) %></div>  - Same as the code above. But Rails is smart enough to know that if
+<% end %>                                                  you pass in the post object as an argument, it SHOULD USE THE ID
+                                                           ATTRIBUTE. So we use this code. 
